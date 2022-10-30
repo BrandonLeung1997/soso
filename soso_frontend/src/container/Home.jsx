@@ -11,7 +11,7 @@ import logo from '../assets/logo.png';
 
 const Home = () => {
     const [toggleSidebar, setToggleSidebar] = useState(false);
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState();
     const scrollRef = useRef(null);
 
 
@@ -60,7 +60,7 @@ const Home = () => {
                 </Routes>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Home
