@@ -20,6 +20,7 @@ const UserProfile = () => {
   const { userId } = useParams();
 
   const clientId = process.env.REACT_APP_GOOGLE_API_TOKEN;
+  const User = localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 
   const logout = () => {
     localStorage.clear();
@@ -77,7 +78,7 @@ const UserProfile = () => {
               {user.userName}
             </h1>
             <div className="absolute top-0 z-1 right-0 p-2">
-              {userId === user._id && (
+              {userId === User.googleId && (
                 <GoogleLogout
                   clientId={clientId}
                   render={(renderProps) => (
@@ -90,7 +91,7 @@ const UserProfile = () => {
                           <AiOutlineLogout color="red" fontSize={21} />
                       </button>
                   )}
-                  onSuccess={logout}
+                  onLogoutSuccess={logout}
                   cookiePolicy="single_host_origin"
                 />
               )}
